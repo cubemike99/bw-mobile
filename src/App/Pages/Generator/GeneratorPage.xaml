@@ -287,6 +287,27 @@
                             Text="{Binding ForwardEmailDomainName}"
                             StyleClass="box-value"
                             AutomationId="ForwardEmailDomainNameEntry" />
+
+
+                        <Label IsVisible="{Binding ForwardedEmailServiceSelected, Converter={StaticResource enumToBool}, ConverterParameter={x:Static enums:ForwardedEmailServiceType.Fastmail}}"
+                            Text="{u:I18n DomainNameRequiredParenthesis}"
+                            StyleClass="box-label"
+                            Margin="0,10,0,0"/>
+                        <Entry IsVisible="{Binding ForwardedEmailServiceSelected, Converter={StaticResource enumToBool}, ConverterParameter={x:Static enums:ForwardedEmailServiceType.Fastmail}}"
+                            x:Name="_fastmailDescriptionEntry"
+                            Text="{Binding EmailName}"
+                            StyleClass="box-value"
+                            AutomationId="FastmailDescriptionEntry" />
+                        
+                        <Label IsVisible="{Binding ForwardedEmailServiceSelected, Converter={StaticResource enumToBool}, ConverterParameter={x:Static enums:ForwardedEmailServiceType.Fastmail}}"
+                            Text="{u:I18n DomainNameRequiredParenthesis}"
+                            StyleClass="box-label"
+                            Margin="0,10,0,0"/>
+                        <Entry IsVisible="{Binding ForwardedEmailServiceSelected, Converter={StaticResource enumToBool}, ConverterParameter={x:Static enums:ForwardedEmailServiceType.Fastmail}}"
+                            x:Name="_fastmailDomainNameEntry"
+                            Text="{Binding EmailWebsite}"
+                            StyleClass="box-value"
+                            AutomationId="FastmailDomainNameEntry" />
                     </StackLayout>                    
                     <!--RANDOM WORD OPTIONS-->
                     <Grid IsVisible="{Binding UsernameTypeSelected, Converter={StaticResource enumToBool}, ConverterParameter={x:Static enums:UsernameType.RandomWord}}">
