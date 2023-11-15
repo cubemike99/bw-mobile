@@ -20,7 +20,7 @@ namespace Bit.App.Pages
         private readonly Action<string> _selectAction;
         private readonly TabsPage _tabsPage;
 
-        public GeneratorPage(bool fromTabPage, Action<string> selectAction = null, TabsPage tabsPage = null, bool isUsernameGenerator = false, string emailWebsite = null, bool editMode = false, AppOptions appOptions = null)
+        public GeneratorPage(bool fromTabPage, Action<string> selectAction = null, TabsPage tabsPage = null, bool isUsernameGenerator = false, string emailName = null, string emailWebsite = null, bool editMode = false, AppOptions appOptions = null)
         {
             _tabsPage = tabsPage;
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace Bit.App.Pages
             _selectAction = selectAction;
             _vm.ShowTypePicker = fromTabPage;
             _vm.IsUsername = isUsernameGenerator;
+            _vm.EmailName = emailName;
             _vm.EmailWebsite = emailWebsite;
             _vm.EditMode = editMode;
             _vm.IosExtension = appOptions?.IosExtension ?? false;

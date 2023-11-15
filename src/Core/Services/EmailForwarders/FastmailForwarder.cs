@@ -11,6 +11,7 @@ namespace Bit.Core.Services.EmailForwarders
 {
     public class FastmailForwarderOptions : ForwarderOptions
     {
+        public string Name { get; set; }
         public string Website { get; set; }
     }
 
@@ -58,7 +59,7 @@ namespace Bit.Core.Services.EmailForwarders
                                     ["new-masked-email"] = new JObject
                                     {
                                         ["state"] = "enabled",
-                                        ["description"] = "",
+                                        ["description"] = options.Name,
                                         ["url"] = "",
                                         ["emailPrefix"] = "",
                                         ["forDomain"] = ( null == options.Website ? "" : options.Website )

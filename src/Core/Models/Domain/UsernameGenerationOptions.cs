@@ -26,6 +26,7 @@ namespace Bit.Core.Models.Domain
         public string AnonAddyDomainName { get; set; }
         public string ForwardEmailApiAccessToken { get; set; }
         public string ForwardEmailDomainName { get; set; }
+        public string EmailName { get; set; }
         public string EmailWebsite { get; set; }
 
         public ForwarderOptions GetForwarderOptions()
@@ -48,6 +49,7 @@ namespace Bit.Core.Models.Domain
                 case ForwardedEmailServiceType.Fastmail:
                     return new FastmailForwarderOptions 
                     {   ApiKey = FastMailApiKey,
+                        Name = EmailName,
                         Website = EmailWebsite
                     };
                 case ForwardedEmailServiceType.FirefoxRelay:

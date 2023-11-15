@@ -49,6 +49,7 @@ namespace Bit.App.Pages
         private int _passwordTypeSelectedIndex;
         private bool _doneIniting;
         private bool _showTypePicker;
+        private string _emailName;
         private string _emailWebsite;
         private bool _showForwardedEmailApiSecret;
         private bool _editMode;
@@ -650,6 +651,15 @@ namespace Bit.App.Pages
                     });
         }
 
+        public string EmailName
+        {
+            get => _emailName;
+            set => SetProperty(ref _emailName, value, additionalPropertyNames: new string[]
+                    {
+                        nameof(ShowUsernameEmailType)
+                    });
+        }
+
         public async Task InitAsync()
         {
             (_options, EnforcedPolicyOptions) = await _passwordGenerationService.GetOptionsAsync();
@@ -658,6 +668,7 @@ namespace Bit.App.Pages
             _usernameOptions = await _usernameGenerationService.GetOptionsAsync();
             await _tokenService.PrepareTokenForDecodingAsync();
             _usernameOptions.PlusAddressedEmail = _tokenService.GetEmail();
+            _usernameOptions.EmailName = EmailName;
             _usernameOptions.EmailWebsite = EmailWebsite;
             _usernameOptions.CatchAllEmailType = _usernameOptions.PlusAddressedEmailType = string.IsNullOrWhiteSpace(EmailWebsite) || !EditMode ? UsernameEmailType.Random : UsernameEmailType.Website;
 
